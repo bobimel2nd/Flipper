@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+	<title>Coin Flipper</title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var gWins = 0;
+			var gLoss = 0;
+			var gPicks = [0, 0];
+			var Side = ["Heads", "Tails"];
+
+			$(".Choice").on("click", function() {
+				var Clicked = parseInt($(this).attr("val"));
+				var toss = PickInteger(0,1);
+				gPicks[Clicked]++;
+				if (Clicked === toss) {
+					gWins++;
+				} else {
+					gLoss++;
+				}
+				$("#Clicked").text("You Clicked: " + Side[Clicked]);
+				$("#Heads").text("Times you picked Heads: " + gPicks[0]);
+				$("#Tails").text("Times you picked Tails: " + gPicks[1]);
+				$("#Wins").text("Wins: " + gWins);
+				$("#Loss").text("Losses: " + gLoss);
+			});
+
+			function PickInteger(Low, High) {
+				return Math.floor(Math.random()*(High-Low+1) + Low);
+			};
+
+		})
+	</script>
+</head>
+<body>
+	<p><button class="Choice" val=0>Heads</button></p>
+	<p><button class="Choice" val=1>Trails</button></p>
+	<p></p>
+	<p id="Clicked">You Clicked: </p>
+	<p></p>
+	<p id="Heads">Times you picked Heads: </p>
+	<p id="Tails">Times you picked Tails: </p>
+	<p></p>
+	<p id="Wins">Wins: </p>
+	<p id="Loss">Losses: </p>
+</body>
+</html>

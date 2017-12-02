@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+  <head>
+
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+  </head>
+
+  <body>
+
+    <div>
+      <img id="image" src="#" alt="Picture">
+    </div>
+
+    <br>
+
+    <button id="stop">Stop</button>
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Script -->
+    <script type="text/javascript">
+
+    var pics = ["Aliens.jpg", "Crowded.jpg", "Friends.jpg", "Hubble.jpg", "Jetsons.jpg" ];
+    var idx = 0;
+
+    var intervalId;
+
+    $("#stop").on("click", stop);
+
+    function run() {
+      intervalId = setInterval(changePic, 10000);
+    }
+
+    function changePic() {
+      idx++
+      if (idx >= pics.length()) idx = 0;
+      $("#image").attr("alt", pics[idx]);
+      $("#image").attr("src", "./assets/" + pics[idx]);
+    }
+
+    function pause() {
+
+      clearInterval(intervalId);
+    }
+
+    run();
+
+    </script>
+
+  </body>
+
+</html>
